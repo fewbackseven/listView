@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:listView"
              x:DataType="local:MainPageViewModel"
              x:Class="listView.MainPage">
+    
+    <!--x:DataType means compiled bindings, which makes things faster and 
+        gives you compile time errors. 
+        This means that you must set the x:DataType on every DataTemplate
+        See below
+    -->
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -22,7 +28,7 @@
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="x:String">
                     <TextCell Text="{Binding .}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -30,7 +36,7 @@
 
         <ListView ItemsSource="{Binding MyList}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:Customer">
                     <TextCell Text="{Binding Name}" TextColor="Orange"
                               Detail="{Binding Details}" DetailColor="Orange"/>
                 </DataTemplate>
